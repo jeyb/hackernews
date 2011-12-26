@@ -4,8 +4,15 @@ help()
 {
   cat <<EOF
 
-  USAGE:
-    hackernews [-h]
+  NAME:
+    hackernews -- Hacker News without leaving your terminal.
+
+  SYNOPSIS:
+    hackernews [-c]
+
+  OPTIONS:
+    -c    Colorize the output.
+    -h    Prints a summary of the help options.
 
   EXAMPLES:
     hackernews
@@ -24,31 +31,33 @@ EOF
 
 hackernews()
 {
-  blue_highlight=`echo "\033[0;34m"`
-  if [ "$blue_highlight" = "\033[0;34m" ]
-  then
-    blue_highlight=""
-  fi
-
-  brown_highlight=`echo "\033[0;33m"`
-  if [ "$brown_highlight" = "\033[0;33m" ]
-  then
-    brown_highlight=""
-  fi
-
   attributes="title|link"
   curl -s "http://news.ycombinator.com/rss" |
     grep -Eio "<item>.*</item>" |
     grep -Eio "<($attributes)>[^<>]*</($attributes)>" |
-    sed -E "s/<title>([^<>]*)<\/title>/$brown_highlight\1/" |
-    sed -E "s/<link>([^<>]*)<\/link>/$blue_highlight\1★/" |
+    sed -E "s/<title>([^<>]*)<\/title>/$highlight_title\1/" |
+    sed -E "s/<link>([^<>]*)<\/link>/$highlight_link\1★/" |
     tr "★" "\n"
+  printf "\033[0m"
 }
 
 if [ "$1" = "-h" ]
 then
   help
   exit
+elif [ "$1" = "-c" ]
+then
+  highlight_title=`echo "\033[0;1;38;5;202m"`
+  if [ "$highlight_title" = "\033[0;1;38;5;202m" ]
+  then
+    highlight_title=""
+  fi
+
+  highlight_link=`echo "\033[0;38;5;68m"`
+  if [ "$highlight_link" = "\033[0;38;5;68m" ]
+  then
+    highlight_link=""
+  fi
 fi
 
 hackernews

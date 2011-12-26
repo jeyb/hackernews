@@ -8,8 +8,15 @@ Copy the shell script to a folder in your `$PATH`.
 ``` sh
 $ hackernews -h
 
-  USAGE:
-    hackernews [-h]
+  NAME:
+    hackernews -- Hacker News without leaving your terminal.
+
+  SYNOPSIS:
+    hackernews [-c]
+
+  OPTIONS:
+    -c    Colorize the output.
+    -h    Prints a summary of the help options.
 
   EXAMPLES:
     hackernews
