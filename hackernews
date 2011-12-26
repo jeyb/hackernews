@@ -32,11 +32,20 @@ EOF
 hackernews()
 {
   attributes="title|link"
+
+  # GNU sed uses -r for expanded regular expressions but OS X does not use GNU
+  # sed. Instead it relies on -E argument.
+  sed_attributes="-r"
+  if [[ "`uname`" = "Darwin" ]]
+  then
+    sed_attributes="-E"
+  fi
+
   curl -s "http://news.ycombinator.com/rss" |
     grep -Eio "<item>.*</item>" |
     grep -Eio "<($attributes)>[^<>]*</($attributes)>" |
-    sed -E "s/<title>([^<>]*)<\/title>/$highlight_title\1/" |
-    sed -E "s/<link>([^<>]*)<\/link>/$highlight_link\1★/" |
+    sed $sed_attributes "s/<title>([^<>]*)<\/title>/$highlight_title\1/" |
+    sed $sed_attributes "s/<link>([^<>]*)<\/link>/$highlight_link\1★/" |
     tr "★" "\n"
   printf "\033[0m"
 }
