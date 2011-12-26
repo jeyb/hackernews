@@ -12,10 +12,11 @@ $ hackernews -h
     hackernews -- Hacker News without leaving your terminal.
 
   SYNOPSIS:
-    hackernews [-c]
+    hackernews [-c] [-h] [-l LIMIT]
 
   OPTIONS:
     -c    Colorize the output.
+    -l    Limit to LIMIT articles.
     -h    Prints a summary of the help options.
 
   EXAMPLES:
@@ -30,6 +31,10 @@ $ hackernews -h
       http://www.reddit.com/r/technology/comments/npair/godaddy_has_not_withdrawn_its_official/
 
       ...
+
+    hackernews -l 1
+      GoDaddy supports SOPA, redditor proposes "Move your Domain Day"
+      http://www.reddit.com/r/politics/comments/nmnie/godaddy_supports_sopa_im_transferring_51_domains/
 ```
 
 If your terminal is awesome, you can ⌘-click or ⌘-double-click on the links to open them in a browser.
