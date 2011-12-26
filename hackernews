@@ -36,7 +36,7 @@ hackernews()
   # GNU sed uses -r for expanded regular expressions but OS X does not use GNU
   # sed. Instead it relies on -E argument.
   sed_attributes="-r"
-  if [[ "`uname`" = "Darwin" ]]
+  if [ "`uname`" = "Darwin" ]
   then
     sed_attributes="-E"
   fi
