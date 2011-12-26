@@ -25,13 +25,13 @@ EOF
 hackernews()
 {
   blue_highlight=`echo "\033[0;34m"`
-  if [ "$blue_highlight" == "\033[0;34m" ]
+  if [ "$blue_highlight" = "\033[0;34m" ]
   then
     blue_highlight=""
   fi
 
   brown_highlight=`echo "\033[0;33m"`
-  if [ "$brown_highlight" == "\033[0;33m" ]
+  if [ "$brown_highlight" = "\033[0;33m" ]
   then
     brown_highlight=""
   fi
@@ -45,7 +45,7 @@ hackernews()
     tr "★" "\n"
 }
 
-if [ "$1" == "-h" ]
+if [ "$1" = "-h" ]
 then
   help
   exit
