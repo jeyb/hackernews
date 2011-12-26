@@ -32,7 +32,7 @@ $ hackernews -h
       ...
 ```
 
-If your terminal is awesome, you can ⌘-click on the links to open them in a browser.
+If your terminal is awesome, you can ⌘-click or ⌘-double-click on the links to open them in a browser.
 
 ### License
 Copyright (c) 2011 Jey Balachandran
