@@ -37,7 +37,7 @@ hackernews()
   fi
 
   attributes="title|link"
-  wget -q -O- "http://news.ycombinator.com/rss" |
+  curl -s "http://news.ycombinator.com/rss" |
     grep -Eio "<item>.*</item>" |
     grep -Eio "<($attributes)>[^<>]*</($attributes)>" |
     sed -E "s/<title>([^<>]*)<\/title>/$brown_highlight\1/" |
