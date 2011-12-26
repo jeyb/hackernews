@@ -1,0 +1,54 @@
+#!/usr/bin/env sh
+
+help()
+{
+  cat <<EOF
+
+  USAGE:
+    hackernews [-h]
+
+  EXAMPLES:
+    hackernews
+      GoDaddy supports SOPA, redditor proposes "Move your Domain Day"
+      http://www.reddit.com/r/politics/comments/nmnie/godaddy_supports_sopa_im_transferring_51_domains/
+
+      StackOverflow also planning to switch from GoDaddy due to SOPA concerns.
+      http://meta.stackoverflow.com/q/116891/1588
+
+      GoDaddy has not withdrawn its official congressional support for SOPA
+      http://www.reddit.com/r/technology/comments/npair/godaddy_has_not_withdrawn_its_official/
+
+      ...
+EOF
+}
+
+hackernews()
+{
+  blue_highlight=`echo "\033[0;34m"`
+  if [ "$blue_highlight" == "\033[0;34m" ]
+  then
+    blue_highlight=""
+  fi
+
+  brown_highlight=`echo "\033[0;33m"`
+  if [ "$brown_highlight" == "\033[0;33m" ]
+  then
+    brown_highlight=""
+  fi
+
+  attributes="title|link"
+  wget -q -O- "http://news.ycombinator.com/rss" |
+    grep -Eio "<item>.*</item>" |
+    grep -Eio "<($attributes)>[^<>]*</($attributes)>" |
+    sed -E "s/<title>([^<>]*)<\/title>/$brown_highlight\1/" |
+    sed -E "s/<link>([^<>]*)<\/link>/$blue_highlight\1★/" |
+    tr "★" "\n"
+}
+
+if [ "$1" == "-h" ]
+then
+  help
+  exit
+fi
+
+hackernews
