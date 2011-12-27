@@ -1,4 +1,4 @@
-# hackernews
+# hn
 Hacker News without leaving your terminal.
 
 ### Installation
@@ -6,13 +6,13 @@ Copy the shell script to a folder in your `$PATH`.
 
 ### Usage
 ``` sh
-$ hackernews -h
+$ hn -h
 
   NAME:
-    hackernews -- Hacker News without leaving your terminal.
+    hn -- Hacker News without leaving your terminal.
 
   SYNOPSIS:
-    hackernews [-c] [-h] [-l LIMIT]
+    hn [-c] [-h] [-l LIMIT]
 
   OPTIONS:
     -c    Colorize the output.
@@ -20,7 +20,7 @@ $ hackernews -h
     -h    Prints a summary of the help options.
 
   EXAMPLES:
-    hackernews
+    hn
       GoDaddy supports SOPA, redditor proposes "Move your Domain Day"
       http://www.reddit.com/r/politics/comments/nmnie/godaddy_supports_sopa_im_transferring_51_domains/
 
@@ -32,7 +32,7 @@ $ hackernews -h
 
       ...
 
-    hackernews -l 1
+    hn -l 1
       GoDaddy supports SOPA, redditor proposes "Move your Domain Day"
       http://www.reddit.com/r/politics/comments/nmnie/godaddy_supports_sopa_im_transferring_51_domains/
 ```
