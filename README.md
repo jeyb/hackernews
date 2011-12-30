@@ -5,7 +5,7 @@ Hacker News without leaving your terminal.
 Copy the shell script to a folder in your `$PATH`.
 
 ### Usage
-``` sh
+```
 $ hn -h
 
   NAME:
