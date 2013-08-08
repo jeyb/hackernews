@@ -54,7 +54,7 @@ hackernews()
   fi
 
   attributes="title|link"
-  curl -s "http://news.ycombinator.com/rss" |
+  curl -s "https://news.ycombinator.com/rss" |
     grep -Eio "<item>.*</item>" |
     grep -Eio "<($attributes)>[^<>]*</($attributes)>" |
     sed $sed_attributes "s/<title>([^<>]*)<\/title>/$highlight_title\1/" |
